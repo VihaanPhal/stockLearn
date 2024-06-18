@@ -1,11 +1,13 @@
-const { loginUser, signupUser } = require("../Contoller/usersController");
+// Backend/Routes/user.js
+const { loginUser, signupUser } = require("../Controller/usersController");
 const express = require("express");
 const router = express.Router();
 
-// login route
+// Login route
 router.post("/login", loginUser);
 
-// signup route
+// Signup route
 router.post("/signup", signupUser);
 
 module.exports = router;
+    
