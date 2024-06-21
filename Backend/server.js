@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoute = require("./Routes/user");
+const cors = require("cors");
 
 const app = express();
 
@@ -15,6 +16,9 @@ app.use((req, res, next) => {
 
 // Define the port
 const port = 3000;
+
+//cors middle ware so i can hit localhost endpoint from localhost endpoint
+app.use(cors({ origin: "http://localhost:5173" }));
 
 // Hard-coded MongoDB URI
 const mongoURI =
