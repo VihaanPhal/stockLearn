@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link, useNavigate} from 'react-router-dom'
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null); // State for error message
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -21,6 +23,8 @@ const Login = () => {
       } else {
         const data = await response.json();
         console.log("Login successful:", data);
+        navigate('/', { replace: true });
+
       }
     } catch (error) {
       console.error("Signup error:", error);
@@ -59,6 +63,9 @@ const Login = () => {
         <div>
           <button type="submit">Submit</button>
         </div>
+        <Link to={'/signup'}>
+                {"Don't"} have an account?
+        </Link>
       </div>
     </form>
   );
