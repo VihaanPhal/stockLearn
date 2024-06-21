@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Frame = styled.div`
@@ -145,6 +146,9 @@ function SignupForm() {
           <ButtonContainer>
             <SubmitButton type="submit">Submit</SubmitButton>
           </ButtonContainer>
+          <Link to={'/login'}>
+                Already have an account?
+        </Link>
         </FormContainer>
       </form>
     </Frame>
