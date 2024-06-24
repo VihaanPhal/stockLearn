@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate} from 'react-router-dom'
+import './Authentication.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -32,43 +33,44 @@ const Login = () => {
     }
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <div className="HeaderContainer">
-          <h1 className="h1">Login</h1>
+
+
+return(
+  <form onSubmit={handleSubmit}>
+      <div className="Header">
+        <div className="Card">
+          <h1 className="Title">Login</h1>
+          <div className="InputGroup">
+            <label htmlFor="input1" className="Label">Email</label>
+            <input
+              id="input1"
+              className="Input"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="InputGroup">
+            <label htmlFor="input2" className="Label">Password</label>
+            <input
+              id="input2"
+              className="Input"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+            />
+          </div>
+          {errorMessage && <p className="ErrorMessage">{errorMessage}</p>}
+          <button type="submit" className="Button">Submit</button>
+          <div className="LinkContainer">
+            <Link to={'/signup'} className="Link">{"Don't"} have an account?</Link>
+          </div>
         </div>
-        <div>
-          <span>Email</span>
-          <input
-            id="input1"
-            className="input"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <span>Password</span>
-          <input
-            id="input2"
-            className="input"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-          />
-        </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-        <Link to={'/signup'}>
-                {"Don't"} have an account?
-        </Link>
       </div>
     </form>
-  );
+);
 };
 
 export default Login;
+
