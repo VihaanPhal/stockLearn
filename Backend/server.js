@@ -5,20 +5,26 @@ const cors = require("cors");
 
 const app = express();
 
-// Middleware to parse JSON bodies
+const corsOptions = {
+  origin: (origin, callback) => {
+    const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+
 app.use(express.json());
 
-// Example middleware to log requests
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
+  console.log(`Received ${req.method} request for ${req.url}`);
   next();
 });
 
-// Define the port
-const port = 3000;
-
-//cors middle ware so i can hit localhost endpoint from localhost endpoint
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "*" }));
 
 // Hard-coded MongoDB URI
 const mongoURI =
@@ -26,14 +32,12 @@ const mongoURI =
 
 // Connect to MongoDB
 mongoose
-  .connect(mongoURI, {
-    useNewUrlParser: true,
-  })
+  .connect(mongoURI, { useNewUrlParser: true })
   .then(() => {
     console.log("Connected to MongoDB");
     // Start the server after connecting to MongoDB
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
+    app.listen(3000, () => {
+      console.log(`Server is running on port 3000`);
     });
   })
   .catch((err) => {

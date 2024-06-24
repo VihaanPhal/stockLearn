@@ -146,9 +146,7 @@ function SignupForm() {
           <ButtonContainer>
             <SubmitButton type="submit">Submit</SubmitButton>
           </ButtonContainer>
-          <Link to={'/login'}>
-                Already have an account?
-        </Link>
+          <Link to={"/login"}>Already have an account?</Link>
         </FormContainer>
       </form>
     </Frame>
