@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./Authentication/Signup";
 import Login from "./Authentication/Login";
 import Home from "./Home";
@@ -10,13 +10,13 @@ function App() {
   return (
     <>
       <div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </Router>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />\
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Router>
       </div>
     </>
   );

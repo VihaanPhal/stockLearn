@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link, useNavigate} from 'react-router-dom'
-import './Authentication.css';
+import { Link, useNavigate } from "react-router-dom";
+import "./Authentication.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,8 +24,7 @@ const Login = () => {
       } else {
         const data = await response.json();
         console.log("Login successful:", data);
-        navigate('/', { replace: true });
-
+        navigate("/", { replace: true });
       }
     } catch (error) {
       console.error("Signup error:", error);
@@ -33,15 +32,15 @@ const Login = () => {
     }
   };
 
-
-
-return(
-  <form onSubmit={handleSubmit}>
+  return (
+    <form onSubmit={handleSubmit}>
       <div className="Header">
         <div className="Card">
           <h1 className="Title">Login</h1>
           <div className="InputGroup">
-            <label htmlFor="input1" className="Label">Email</label>
+            <label htmlFor="input1" className="Label">
+              Email
+            </label>
             <input
               id="input1"
               className="Input"
@@ -51,7 +50,9 @@ return(
             />
           </div>
           <div className="InputGroup">
-            <label htmlFor="input2" className="Label">Password</label>
+            <label htmlFor="input2" className="Label">
+              Password
+            </label>
             <input
               id="input2"
               className="Input"
@@ -62,15 +63,18 @@ return(
             />
           </div>
           {errorMessage && <p className="ErrorMessage">{errorMessage}</p>}
-          <button type="submit" className="Button">Submit</button>
+          <button type="submit" className="Button">
+            Submit
+          </button>
           <div className="LinkContainer">
-            <Link to={'/signup'} className="Link">{"Don't"} have an account?</Link>
+            <Link to={"/signup"} className="Link">
+              {"Don't"} have an account?
+            </Link>
           </div>
         </div>
       </div>
     </form>
-);
+  );
 };
 
 export default Login;
-

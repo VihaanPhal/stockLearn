@@ -4,6 +4,29 @@ const bcrypt = require("bcrypt");
 const validator = require("validator");
 const Schema = mongoose.Schema;
 
+const stockSchema = new Schema({
+  ticker: {
+    type: String,
+    required: true,
+  },
+  companyName: {
+    type: String,
+    required: true,
+  },
+  purchasePrice: {
+    type: Number,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  purchaseDate: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const userSchema = new Schema({
   email: {
     type: String,
@@ -14,6 +37,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  portfolio: [stockSchema],
 });
 
 // Static signup method

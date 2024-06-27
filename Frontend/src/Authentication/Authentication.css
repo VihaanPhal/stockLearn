@@ -1,95 +1,101 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
-    --bg: #a5d3e8;
-    --bgLight: #b6daf9;
-    --primary: #348bd7;
-    --text-primary: #111111;
-    --text-secondary: #48494a;
-    --card: #FFFFFF;
-    --button: #000000;
-  }
-  
-  body {
-    background-color: var(--bg);
-    color: var(--text-primary);
-    font-family: 'font-serif';
-  }
-  
-  .Header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .Card {
-    background-color: var(--card);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  .Title {
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    text-align: center;
-  }
-  
-  .InputGroup {
-    margin-bottom: 1rem;
-  }
-  
-  .Label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-  }
-  
-  .Input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid var(--bgLight);
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .Button {
-    width: 100%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--primary);
-    color: var(--bg);
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  
-  .Button:hover {
-    background-color: darken(var(--primary), 10%);
-  }
-  
-  .ErrorMessage {
-    color: red;
-    margin-bottom: 1rem;
-  }
-  
-  .LinkContainer {
-    margin-top: 1rem;
-    text-align: center;
-  }
-  
-  .Link {
-    color: var(--primary);
-    text-decoration: none;
-  }
-  
-  .Link:hover {
-    text-decoration: underline;
-  }
-  
+  --bg: #a5d3e8;
+  --bgLight: #b6daf9;
+  --primary: #348bd7;
+  --text-primary: #111111;
+  --text-secondary: #48494a;
+  --text-tertiary: #ffff;
+  --card: #ffffff;
+  --button: #000000;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "font-serif";
+}
+
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.Card {
+  background-color: var(--card);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.Title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.InputGroup {
+  margin-bottom: 1rem;
+}
+
+.Label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.Input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--bgLight);
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.Button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: var(--bg);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.Button:hover {
+  background-color: #2e77b7;
+  transform: translateY(-2px); /* Optional: Adds a slight lift effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+
+.ErrorMessage {
+  color: red;
+  margin-bottom: 1rem;
+}
+.SuccessMessage {
+  color: green;
+  margin-bottom: 1rem;
+}
+
+.LinkContainer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.Link {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.Link:hover {
+  text-decoration: underline;
+}
