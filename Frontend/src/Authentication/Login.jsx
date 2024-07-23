@@ -24,10 +24,11 @@ const Login = () => {
       } else {
         const data = await response.json();
         console.log("Login successful:", data);
+        localStorage.setItem("jwtToken", data.token);
         navigate("/", { replace: true });
       }
     } catch (error) {
-      console.error("Signup error:", error);
+      console.error("Login error:", error);
       setErrorMessage("An error occurred. Please try again.");
     }
   };
