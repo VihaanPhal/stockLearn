@@ -38,6 +38,10 @@ const userSchema = new Schema({
     required: true,
   },
   portfolio: [stockSchema],
+  buyingPower: {
+    type: Double,
+    default: 10000.0
+  }
 });
 
 // Static signup method

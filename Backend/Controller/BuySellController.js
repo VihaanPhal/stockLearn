@@ -16,7 +16,12 @@ const buyStocks = async (req, res) => {
       quantity,
       purchaseDate: new Date(),
     });
-
+    if(purchasePrice * stock.quantity > user.buyingPower ){
+      return res.status(400).json({ error: "Insufficient buying power" });
+    }
+    else{
+      user.buyingPower -= purchasePrice * stock.quantity;
+    }
     await user.save();
     res.status(200).json(user);
   } catch (error) {
@@ -63,7 +68,7 @@ const sellStocks = async (req, res) => {
         updatedPortfolio.push(stock);
       }
     }
-
+    user.buyingPower += quantity * sellPrice;
     user.portfolio = updatedPortfolio;
     await user.save();
     res.status(200).json(user);
@@ -90,14 +95,11 @@ const getPortfolio = async (req, res) => {
 const getBuyingPower = async (req, res) => {
   try {
     console.log("Fetching buying power for user ID:", req.user._id);
-    let buyingPower = 10000;
     const user = await User.findById(req.user._id);
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    user.portfolio.forEach((stock) => {
-      buyingPower -= stock.purchasePrice * stock.quantity;
-    });
+    let buyingPower = user.buyingPower
     console.log("Calculated buying power:", buyingPower);
     res.status(200).json({ buyingPower });
   } catch (error) {
